@@ -1,6 +1,8 @@
 # AI Animation Generator
 
-![AI Animation Generator](https://via.placeholder.com/1200x400) <!-- Replace with actual project screenshot -->
+![AI Animation Generator](https://via.placeholder.com/1200x400) <!-- Replace with actual project screenshot
+
+
 
 An AI-powered animation generator that creates animations from text prompts using cutting-edge technologies. Built with FastAPI backend, Cloudinary for video storage, and Groq's LPU engine for ultra-fast LLM processing.
 
