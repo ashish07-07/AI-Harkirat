@@ -2,7 +2,9 @@
 
 
 
-![AI Animation Generator](https://raw.githubusercontent.com/ashish07-07/AI-Harkirat/Screenshot_2025-05-08_030958.png)
+
+
+![AI Animation Generator](https://raw.githubusercontent.com/ashish07-07/AI-Harkirat/main/Screenshot%202025-05-08%20030958.png)
 
 An AI-powered animation generator that creates animations from text prompts using cutting-edge technologies. Built with FastAPI backend, Cloudinary for video storage, and Groq's LPU engine for ultra-fast LLM processing.
 
