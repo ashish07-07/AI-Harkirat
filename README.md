@@ -1,6 +1,6 @@
 # AI Animation Generator
 
-![AI Animation Generator](https://via.placeholder.com/1200x400) <!-- Replace with actual project screenshot
+
 
 ![AI Animation Generator](https://raw.githubusercontent.com/ashish07-07/AI-Harkirat/Screenshot_2025-05-08_030958.png)
 
