@@ -17,9 +17,15 @@ export default function VideoRequirementForm() {
   const [input, setInput] = useState('')
   const [videoUrl, setVideoUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [voiceinput,setvoiceinput]=useState<string|null>(null)
   
   async function changeHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setInput(e.target.value)
+  }
+
+  async function voicechangrhandler(e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)
+  {
+        setvoiceinput(e.target.value) 
   }
   
   async function submitHandler(e:any) {
@@ -27,18 +33,30 @@ export default function VideoRequirementForm() {
     setIsLoading(true)
     
     try {
-      const response:any = await axios.post('http://127.0.0.1:8000/usercase', {
-        requirements: input
-      })
-      
-      console.log(response.data.url)
-      let videoUrl = response.data.url
-      
-      if (videoUrl) {
-        setVideoUrl(videoUrl)
-      }
-      
-      setInput("")
+
+
+         if (input)
+         {
+          const response:any = await axios.post('http://127.0.0.1:8000/usercase', {
+            requirements: input,
+            voice:voiceinput
+          })
+
+          console.log(response.data.url)
+          let videoUrl = response.data.url
+
+
+          if (videoUrl) {
+            setVideoUrl(videoUrl)
+            setInput("")
+          }
+
+
+          setvoiceinput("")
+         }
+       
+    
+    
     } catch (error) {
       console.error("Error fetching video:", error)
     } finally {
@@ -74,6 +92,17 @@ export default function VideoRequirementForm() {
               onChange={changeHandler}
               className="w-full px-6 py-5 rounded-lg border-2 border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg cal-sans h-40"
             />
+
+            
+            <input
+  type="text"
+  placeholder="Enter the text message u want in this video"
+  onChange={voicechangrhandler}
+  value={voiceinput || ""}
+  className="w-full mt-4 px-4 py-3 rounded-lg border-2 border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg cal-sans"
+/>
+
+
             
             <button 
               onClick={submitHandler}
