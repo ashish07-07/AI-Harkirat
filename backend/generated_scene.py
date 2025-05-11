@@ -1,33 +1,29 @@
 from manim import *
 
-class ThreeSquares(Scene):
+class DataFlow(Scene):
     def construct(self):
-        # Create three squares
-        square1 = Square(side_length=2).shift(LEFT * 2)
-        square2 = Square(side_length=2)
-        square3 = Square(side_length=2).shift(RIGHT * 2)
+        # Create the squares
+        frontend = Square(color=BLUE, side_length=2)
+        backend = Square(color=GREEN, side_length=2)
 
-        # Create labels for the squares
-        label1 = Text("AI").move_to(square1.get_center())
-        label2 = Text("AI").move_to(square2.get_center())
-        label3 = Text("AI").move_to(square3.get_center())
+        # Create the circle
+        data = Circle(color=RED, radius=1)
 
-        # Add squares and labels to the scene
-        self.play(Create(square1), Write(label1))
-        self.play(Create(square2), Write(label2))
-        self.play(Create(square3), Write(label3))
+        # Position the squares and circle
+        frontend.to_edge(LEFT)
+        backend.to_edge(RIGHT)
+        data.move_to(ORIGIN)
 
-        # Add arrows between the squares
-        arrow1 = Arrow(square1.get_right(), square2.get_left(), color=WHITE)
-        arrow2 = Arrow(square2.get_right(), square3.get_left(), color=WHITE)
+        # Add labels to the squares and circle
+        frontend_label = Text("Frontend").next_to(frontend, UP)
+        backend_label = Text("Backend").next_to(backend, UP)
+        data_label = Text("Data").next_to(data, UP)
 
-        self.play(Create(arrow1))
-        self.play(Create(arrow2))
+        # Add all objects to the scene
+        self.play(Create(frontend), Write(frontend_label))
+        self.play(Create(backend), Write(backend_label))
+        self.play(Create(data), Write(data_label))
 
-        # Wait for a moment
-        self.wait(2)
-
-        # Clean up
-        self.play(FadeOut(square1), FadeOut(label1), FadeOut(arrow1))
-        self.play(FadeOut(square2), FadeOut(label2), FadeOut(arrow2))
-        self.play(FadeOut(square3), FadeOut(label3))
+        # Animate the data moving from frontend to backend
+        self.play(data.animate.move_to(frontend.get_center()), run_time=2)
+        self.play(data.animate.move_to(backend.get_center()), run_time=2)
