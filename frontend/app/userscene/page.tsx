@@ -37,7 +37,7 @@ export default function VideoRequirementForm() {
 
          if (input)
          {
-          const response:any = await axios.post('https://ai-harkirat.onrender.com/usercase', {
+          const response:any = await axios.post('http://127.0.0.1:8000/usercase', {
             requirements: input,
             voice:voiceinput
           })
