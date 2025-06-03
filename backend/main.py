@@ -1,31 +1,5 @@
 
     
-
-
-
-    
-
-
-   
-    
-
-
-
-
-  
-     
-
-
-
-
-
-
-
-
-
-
-
-
 from fastapi import FastAPI
 from fastapi.params import Body
 from pydantic import BaseModel
